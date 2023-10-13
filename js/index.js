@@ -1,17 +1,18 @@
+
 const data = [
     {
       id: 1,
       name: " Amazfit Bip 3 Pro ",
       img: "https://m.media-amazon.com/images/I/71Cgm+01-PL._AC_UL480_QL65_.jpg",
       price: 18000,
-      categories: "Luxury",
+      categories: "Expensive",
     },
     {
       id: 2,
       name: "Apple Watch Series 6",
       img: "https://m.media-amazon.com/images/I/61nZQ+fv1qL._AC_UL480_QL65_.jpg",
       price: 17000,
-      categories: "Luxury",
+      categories: "Expensive",
     },
     {
       id: 3,
@@ -25,14 +26,14 @@ const data = [
       name: " SAMSUNG Galaxy Watch 6 ",
       img: "https://m.media-amazon.com/images/I/51x0g9PoieL._AC_UL480_FMwebp_QL65_.jpg",
       price: 15000,
-      categories: "Sport",
+      categories: "Sports",
     },
     {
       id: 5,
       name: "OnePlus Watch ",
       img: "https://m.media-amazon.com/images/I/51-PGlCDyTS._AC_UL480_FMwebp_QL65_.jpg",
       price: 7000,
-      categories: "Casual",
+      categories: "Luxury",
     },
     {
         id: 6,
@@ -53,7 +54,7 @@ const data = [
         name: "TOZO S2 44MM",
         img: "https://m.media-amazon.com/images/I/613pEi4kmyL._AC_UL480_FMwebp_QL65_.jpg",
         price: 7000,
-        categories: "Casual",
+        categories: "Luxury",
       },
       {
         id:9,
@@ -78,10 +79,49 @@ const data = [
         <div class='product'>
           <img src="${product.img}" alt="${product.name}" />
           <span class="name">${product.name}</span>
-          <span class="priceText">${product.price}</span>
+          <span class="priceText">&#x20B9;${product.price}</span>
         </div>
       `;
     }).join("");
   }
   
   displayProducts(data);
+
+  searchInput.addEventListener("keyup" , (e)=>{
+    const value = e.target.value.toLowerCase();
+    if(value){
+        displayProducts(data.filter((item)=>
+            item.name.toLowerCase().indexOf(value) !== -1
+        ));
+
+    }else{
+        displayProducts(data);
+    }
+  })
+
+  setCategories = ()=>{
+    const allCategories = data.map((item) => item.categories);
+    const uniqueCategories = ["All" , ...allCategories.filter((item , i)=>{
+        return allCategories.indexOf(item) === i;
+    }) , ];
+
+    // console.log(uniqueCategories);
+    categoriesContainer.innerHTML = uniqueCategories.map(cat=>{
+        return `
+          <span class="categories">${cat}</span>
+        `
+    }).join("");
+
+
+    categoriesContainer.addEventListener("click" , (e)=>{
+        const targetValue = e.target.textContent;
+        targetValue === "All"
+        ? displayProducts(data)
+        : displayProducts(data.filter((item) => item.categories === targetValue));
+
+    });
+
+  }
+
+  setCategories();
+
