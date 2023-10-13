@@ -44,23 +44,23 @@ h1{
 
 .content{
     width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    text-align: center;
-
+   
 }
 
 .products{
-    width: 350px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* border: 1px solid blue; */
+}
+.product{
+    display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.product{
+    flex-direction: column;
     width: 350px;
+    /* gap: 10px; */
+    /* border: 1px solid black; */
 }
 
 img{

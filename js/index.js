@@ -55,8 +55,33 @@ const data = [
         price: 7000,
         categories: "Casual",
       },
+      {
+        id:9,
+        "name":"Fossi Gen 5",
+        img:"https://m.media-amazon.com/images/I/817xTLBbhAL._AC_UL480_QL65_.jpg",
+        price:19259,
+        categories:"Expensive"
+      }
 
   ];
 
-  const products = document.querySelector('.products');
+  const productsContainer = document.querySelector('.products');
+
+  const searchInput = document.querySelector('.search');
+  const categoriesContainer = document.querySelector('.categoriesContainer');
+  const priceRange = document.querySelector('.priceRange');
+  const priceValue = document.querySelector('.priceValue');
+
+  const displayProducts = (filterProducts) => {
+    productsContainer.innerHTML = filterProducts.map((product) => {
+      return `
+        <div class='product'>
+          <img src="${product.img}" alt="${product.name}" />
+          <span class="name">${product.name}</span>
+          <span class="priceText">${product.price}</span>
+        </div>
+      `;
+    }).join("");
+  }
   
+  displayProducts(data);
