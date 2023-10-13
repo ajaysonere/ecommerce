@@ -60,7 +60,7 @@ const data = [
         id:9,
         "name":"Fossi Gen 5",
         img:"https://m.media-amazon.com/images/I/817xTLBbhAL._AC_UL480_QL65_.jpg",
-        price:19259,
+        price:20000,
         categories:"Expensive"
       }
 
@@ -123,5 +123,24 @@ const data = [
 
   }
 
+
+
+  const setPrices = ()=>{
+     const priceList = data.map((item)=>item.price);
+     const minPrice = Math.min(...priceList);
+     const maxPrice = Math.max(...priceList);
+
+     priceRange.min = minPrice;
+     priceRange.max = maxPrice;
+     priceRange.value = maxPrice;
+     priceValue.textContent = `₹${maxPrice}`;
+
+     priceRange.addEventListener("input" , (e)=>{
+        priceValue.textContent = `₹${e.target.value}`;
+        displayProducts(data.filter(item => item.price <= e.target.value));
+     })
+  }
+
   setCategories();
+  setPrices();
 
