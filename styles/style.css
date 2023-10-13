@@ -1,5 +1,70 @@
 *{
     margin: 0;
     padding: 0;
+}
+
+body{
     font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    display: flex;
+    padding: 2rem;
+}
+
+.leftMenu{
+    width: 20%;
+}
+
+h1{
+    font-size: 1.2rem;
+    color: #555;
+    font-weight: 300;
+    margin-top: 1rem;
+}
+
+.categoriesContainer{
+    display: flex; 
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.categories{
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 5px;
+}
+
+.search{
+    padding: 0.5rem;
+    width: 12rem;
+    border: 1px solid gray;
+}
+
+.content{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    text-align: center;
+
+}
+
+.products{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.product{
+    width: 350px;
+}
+
+img{
+    width: 150px;
+    height: 250px;
+    object-fit: contain;
 }
